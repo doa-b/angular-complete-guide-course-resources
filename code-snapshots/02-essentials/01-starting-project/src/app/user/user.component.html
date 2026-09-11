@@ -1,0 +1,9 @@
+<div>
+  <button (click)="onSelectUser()">
+  <!--  to read a signal, you have to call the function.
+  This executes the signal's read function  -->
+    <img [src]="imagePath()"
+         [alt]="selectedUser().name"/>
+    <span>{{ selectedUser().name }}</span>
+  </button>
+</div>
