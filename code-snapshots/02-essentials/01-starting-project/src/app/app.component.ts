@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component } from '@angular/core';
 import {HeaderComponent} from "./header/header.component";
 import {UserComponent} from "./user/user.component";
 import {DUMMY_USERS} from "./dummy-users";
@@ -14,6 +14,10 @@ import {DUMMY_USERS} from "./dummy-users";
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  // 1. expose the imported data into its template
   users = DUMMY_USERS;
+
+  // 6. Handle that event
+  onSelectUser(id: string) {
+    console.log('Selected User with ID:' + id)
+  }
 }
