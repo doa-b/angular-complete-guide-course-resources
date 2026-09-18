@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
-    @Input({ required: true}) name!: string
+  // 2. So it is safer to expect undefined
+  @Input() name: string | undefined;
 }
