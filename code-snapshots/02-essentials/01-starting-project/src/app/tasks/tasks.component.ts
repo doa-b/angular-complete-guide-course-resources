@@ -9,6 +9,5 @@ import {User} from "../dummy-users";
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
-  // 2. So it is safer to expect undefined
   @Input() name?: User['name'];
 }
