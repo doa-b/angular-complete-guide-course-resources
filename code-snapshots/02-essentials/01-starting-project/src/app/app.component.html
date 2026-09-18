@@ -2,24 +2,14 @@
 
 <main>
   <ul id="users">
-    <li>
-      <app-user [user] = users[0] />
-    </li>
-    <li>
-      <app-user [user] = users[1] />
-    </li>
-    <li>
-      <app-user [user] = users[2] />
-    </li>
-    <li>
-      <app-user [user] = users[3] />
-    </li>
-    <li>
-      <app-user [user] = users[4] />
-    </li>
-    <li>
-      <app-user [user] = users[5] />
-    </li>
+    <!--   We need to dynamically add all users -->
+    <!-- angular wants to keep track of all items.
+    With track we tell angular what to use   -->
+    @for (user of users; track user.id) {
+      <li>
+        <app-user [user] = user />
+      </li>
+    }
   </ul>
 <!--  3. and accept it like this-->
 <app-tasks [name]="selectedUser?.name"/>

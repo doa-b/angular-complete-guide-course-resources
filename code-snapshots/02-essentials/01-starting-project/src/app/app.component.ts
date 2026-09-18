@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {HeaderComponent} from "./header/header.component";
 import {UserComponent} from "./user/user.component";
-import {DUMMY_USERS} from "./dummy-users";
+import {DUMMY_USERS, User} from "./dummy-users";
 import {TasksComponent} from "./tasks/tasks.component";
 
 @Component({
@@ -19,7 +19,7 @@ export class AppComponent {
   users = DUMMY_USERS;
   selectedUserId: string = '';
 
-  get selectedUser() {
+  get selectedUser(): User | undefined {
     return this.users.find(
       // 1. can return undefined
       user => user.id === this.selectedUserId);

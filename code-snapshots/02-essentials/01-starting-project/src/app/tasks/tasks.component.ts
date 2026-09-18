@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import {User} from "../dummy-users";
 
 @Component({
   selector: 'app-tasks',
@@ -9,5 +10,5 @@ import { Component, Input } from '@angular/core';
 })
 export class TasksComponent {
   // 2. So it is safer to expect undefined
-  @Input() name: string | undefined;
+  @Input() name?: User['name'];
 }
