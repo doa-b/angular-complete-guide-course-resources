@@ -17,7 +17,7 @@ import {TasksComponent} from "./tasks/tasks.component";
 })
 export class AppComponent {
   users = DUMMY_USERS;
-  selectedUserId: string = '';
+  selectedUserId?: string;
 
   get selectedUser(): User | undefined {
     return this.users.find(

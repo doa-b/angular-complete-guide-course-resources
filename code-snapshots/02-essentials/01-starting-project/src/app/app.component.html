@@ -2,15 +2,18 @@
 
 <main>
   <ul id="users">
-    <!--   We need to dynamically add all users -->
-    <!-- angular wants to keep track of all items.
-    With track we tell angular what to use   -->
     @for (user of users; track user.id) {
       <li>
-        <app-user [user] = user />
+        <app-user [user]=user (select)="onSelectUser($event)"/>
       </li>
     }
   </ul>
-<!--  3. and accept it like this-->
-<app-tasks [name]="selectedUser?.name"/>
+  <!--  Outputting conditional content-->
+  @if (selectedUser) {
+    <!--    We now know for certain we always get a name-->
+    <app-tasks [name]="selectedUser.name"/>
+    <!-- you can also use else or else if -->
+  } @else {
+    <p id="fallback">Select a user to see their tasks!</p>
+  }
 </main>
