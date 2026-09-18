@@ -1,4 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {User} from "../dummy-users";
 
 @Component({
   selector: 'app-user',
@@ -7,19 +8,14 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  // 1. We need an ID of that user
-  @Input({required: true}) id!: string
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
-  // 2. assign an event emmitter
+  @Input({required: true}) user!: User;
   @Output() select = new EventEmitter<string>();
 
   get imagePath() {
-    return 'assets/users/' + this.avatar
+    return 'assets/users/' + this.user.avatar
   }
 
   onSelectUser() {
-    // 3. use that emitter to send the id upwards
-    this.select.emit(this.id)
+    this.select.emit(this.user.id)
   }
 }
