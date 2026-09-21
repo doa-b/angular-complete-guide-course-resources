@@ -8,8 +8,8 @@
   <ul>
     @for (task of selectedUserTasks; track task.id) {
       <li>
-<!--        2 pass it to our component -->
-        <app-task [task]="task"/>
+<!--        3 listen to the output and trigger a handler -->
+        <app-task [task]="task" (complete)="onCompleteTask($event)"/>
       </li>
     }
   </ul>

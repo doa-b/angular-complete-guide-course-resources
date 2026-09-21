@@ -42,4 +42,10 @@ export class TasksComponent {
   get selectedUserTasks() {
     return this.tasks.filter((task) => task.userId === this.userId)
   }
+
+  // 4. handle that completed event
+  onCompleteTask(id: string) {
+    // remove from the tasks list
+    this.tasks = this.tasks.filter((task) => task.id !== id)
+  }
 }
