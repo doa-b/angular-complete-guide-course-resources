@@ -1,18 +1,22 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-new-task',
   standalone: true,
-  imports: [],
+  // 2. You need to import the forms module to use form directives
+  imports: [
+    FormsModule
+  ],
   templateUrl: './new-task.component.html',
   styleUrl: './new-task.component.css'
 })
 export class NewTaskComponent {
-  // 3. Create an eventEmitter and expose it to the parent
   @Output() cancel = new EventEmitter<void>();
+  // 1. Create a field to hold the title value
+  enteredTitle = '';
 
-  // 4. Add a handler to sent the event
   onCancel() {
-    this.cancel.emit()
+    this.cancel.emit();
   }
 }

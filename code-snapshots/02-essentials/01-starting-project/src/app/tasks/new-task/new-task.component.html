@@ -1,21 +1,32 @@
-<!-- 5. Invoke it on the backdrop -->
 <div class="backdrop" (click)="onCancel()"></div>
 <dialog open>
   <h2>Add Task</h2>
   <form>
     <p>
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" />
+      <!-- 3. set up 2 way binding with a standard directive -->
+      <!--      Let you listen to value changes AND
+        give ability to write data back into this input-->
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="enteredTitle"
+      />
     </p>
 
     <p>
       <label for="summary">Summary</label>
-      <textarea id="summary" rows="5" name="summary"></textarea>
+      <textarea
+        id="summary"
+        rows="5"
+        name="summary"
+      ></textarea>
     </p>
 
     <p>
       <label for="due-date">Due Date</label>
-      <input type="date" id="due-date" name="due-date" />
+      <input type="date" id="due-date" name="due-date"/>
     </p>
 
     <p class="actions">
