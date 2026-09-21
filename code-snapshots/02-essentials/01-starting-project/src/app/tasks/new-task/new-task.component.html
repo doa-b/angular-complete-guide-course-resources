@@ -21,12 +21,18 @@
         id="summary"
         rows="5"
         name="summary"
+        [(ngModel)]="enteredSummary"
       ></textarea>
     </p>
 
     <p>
       <label for="due-date">Due Date</label>
-      <input type="date" id="due-date" name="due-date"/>
+      <!--inputs will always yield a string value, even for dates -->
+      <input type="date"
+             id="due-date"
+             name="due-date"
+             [(ngModel)]="enteredDate"
+      />
     </p>
 
     <p class="actions">

@@ -4,7 +4,6 @@ import {FormsModule} from "@angular/forms";
 @Component({
   selector: 'app-new-task',
   standalone: true,
-  // 2. You need to import the forms module to use form directives
   imports: [
     FormsModule
   ],
@@ -13,9 +12,9 @@ import {FormsModule} from "@angular/forms";
 })
 export class NewTaskComponent {
   @Output() cancel = new EventEmitter<void>();
-  // 1. Create a field to hold the title value
   enteredTitle = '';
-
+  enteredSummary = '';
+  enteredDate = '';
   onCancel() {
     this.cancel.emit();
   }
