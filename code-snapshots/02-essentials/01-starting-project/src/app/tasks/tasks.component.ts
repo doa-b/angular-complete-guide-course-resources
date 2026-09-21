@@ -1,14 +1,7 @@
-import { Component, Input } from '@angular/core';
-import {User} from "../dummy-users";
+import {Component, Input} from '@angular/core';
 import {TaskComponent} from "./task/task.component";
-// 1. Type Task
-export interface Task {
-  id: string,
-  userId: User['id']
-  title: string
-  summary: string
-  dueDate: string
-}
+import {User} from "../user/user.model";
+import {Task} from "./task/task.model";
 
 @Component({
   selector: 'app-tasks',
