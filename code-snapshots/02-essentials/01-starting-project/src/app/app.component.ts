@@ -21,7 +21,6 @@ export class AppComponent {
 
   get selectedUser(): User | undefined {
     return this.users.find(
-      // 1. can return undefined
       user => user.id === this.selectedUserId);
   }
 
