@@ -1,6 +1,14 @@
 import { Component, Input } from '@angular/core';
 import {User} from "../dummy-users";
 import {TaskComponent} from "./task/task.component";
+// 1. Type Task
+export interface Task {
+  id: string,
+  userId: User['id']
+  title: string
+  summary: string
+  dueDate: string
+}
 
 @Component({
   selector: 'app-tasks',
@@ -13,10 +21,8 @@ import {TaskComponent} from "./task/task.component";
 })
 export class TasksComponent {
   @Input({required: true}) name!: User['name'];
-  // 2. Add as input
   @Input({required: true}) userId!: User['id'];
-  // 3. Create some dummy tasks
-  tasks = [{
+  tasks: Array<Task> = [{
       id: 't1',
       userId: 'u1',
       title: 'Master Angular',
@@ -40,7 +46,6 @@ export class TasksComponent {
       dueDate: '2024-06-15',
     },
   ]
-  // 4. add A getter that filters to that specific users task
   get selectedUserTasks() {
     return this.tasks.filter((task) => task.userId === this.userId)
   }

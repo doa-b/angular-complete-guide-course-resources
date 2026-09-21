@@ -6,10 +6,10 @@
     </menu>
   </header>
   <ul>
-    <!--5. loop over THOSE talks    -->
     @for (task of selectedUserTasks; track task.id) {
       <li>
-        <app-task/>
+<!--        2 pass it to our component -->
+        <app-task [task]="task"/>
       </li>
     }
   </ul>
