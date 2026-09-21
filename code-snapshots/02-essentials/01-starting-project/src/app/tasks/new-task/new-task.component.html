@@ -1,12 +1,10 @@
 <div class="backdrop" (click)="onCancel()"></div>
 <dialog open>
   <h2>Add Task</h2>
+      <!-- 4. register that handler to the Angular form submission event  -->
   <form (ngSubmit)="onSubmit()">
     <p>
       <label for="title">Title</label>
-      <!-- 3. set up 2 way binding with a standard directive -->
-      <!--      Let you listen to value changes AND
-        give ability to write data back into this input-->
       <input
         type="text"
         id="title"
@@ -36,14 +34,7 @@
     </p>
 
     <p class="actions">
-      <!-- 6. Also invoke it here    -->
       <button type="button" (click)="onCancel()">Cancel</button>
-      <!-- As a html default, clicking a type=submit button      -->
-      <!-- Automatically sends a request to the server that serves these files-->
-      <!-- This is not what we want. We should prevent this     -->
-      <!-- Angular does that automatically for us, when we use the Forms module -->
-      <!-- Because it uses a FormsComponent for <forms> -->
-      <!-- It also provides a submission event which you can use -->
       <button type="submit">Create</button>
     </p>
   </form>

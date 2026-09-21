@@ -1,6 +1,6 @@
 @if(isAddingTask) {
- <!--2.  Add the handler to receive an output from its new-task child -->
-  <app-new-task (cancel)="onCancelAddTask()"/>
+ <!--5  Add the handler to receive the new task payload -->
+  <app-new-task (cancel)="onCancelAddTask()" (add)="onAddTask($event)"/>
 }
 <section id="tasks">
   <header>

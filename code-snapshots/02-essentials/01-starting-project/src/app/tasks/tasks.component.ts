@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {TaskComponent} from "./task/task.component";
 import {User} from "../user/user.model";
-import {Task} from "./task/task.model";
+import {NewTask, Task} from "./task/task.model";
 import {NewTaskComponent} from "./new-task/new-task.component";
 
 @Component({
@@ -51,11 +51,23 @@ export class TasksComponent {
   onCompleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id)
   }
+
   onStartAddTask() {
     this.isAddingTask = true;
   }
+
   // 1. Add a way to cancel the dialog
   onCancelAddTask() {
+    this.isAddingTask = false;
+  }
+
+  // 6. The handler adds userId and id and pushes it into the tasks array to store it
+  onAddTask(newTask: NewTask) {
+    this.tasks.push({
+      userId: this.userId,
+      id: new Date().toString(),
+      ...newTask
+    });
     this.isAddingTask = false;
   }
 }
