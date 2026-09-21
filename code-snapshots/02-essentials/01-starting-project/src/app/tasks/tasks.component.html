@@ -1,14 +1,18 @@
+<!--4 conditionally render our new component -->
+@if(isAddingTask) {
+  <app-new-task/>
+}
 <section id="tasks">
   <header>
     <h2>{{ name }}'s Tasks</h2>
     <menu>
-      <button>Add Task</button>
+    <!-- 3. bind that handler to a button click -->
+      <button (click)="onStartAddTask()">Add Task</button>
     </menu>
   </header>
   <ul>
     @for (task of selectedUserTasks; track task.id) {
       <li>
-<!--        3 listen to the output and trigger a handler -->
         <app-task [task]="task" (complete)="onCompleteTask($event)"/>
       </li>
     }
