@@ -1,12 +1,11 @@
-<!--4 conditionally render our new component -->
 @if(isAddingTask) {
-  <app-new-task/>
+ <!--2.  Add the handler to receive an output from its new-task child -->
+  <app-new-task (cancel)="onCancelAddTask()"/>
 }
 <section id="tasks">
   <header>
     <h2>{{ name }}'s Tasks</h2>
     <menu>
-    <!-- 3. bind that handler to a button click -->
       <button (click)="onStartAddTask()">Add Task</button>
     </menu>
   </header>

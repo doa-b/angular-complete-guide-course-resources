@@ -51,8 +51,11 @@ export class TasksComponent {
   onCompleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id)
   }
-  // 2. set it with a handler
   onStartAddTask() {
     this.isAddingTask = true;
+  }
+  // 1. Add a way to cancel the dialog
+  onCancelAddTask() {
+    this.isAddingTask = false;
   }
 }
