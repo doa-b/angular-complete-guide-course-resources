@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core'
 import {NewTask, Task} from "./task/task.model";
 
-// 3. It needs to be registered as an injectable so Angular is aware of it and
-// can inject it anywhere, depending on the providedIn you configure
+const TASKS_LOCALSTORAGE_KEY = 'tasks';
+
 @Injectable({providedIn: 'root'})
 export class TasksService {
- // 1. Add data as private members
   private  tasks: Array<Task> = [{
    id: 't1',
    userId: 'u1',
@@ -30,7 +29,20 @@ export class TasksService {
      dueDate: '2024-06-15',
    },
  ];
-  // 2. Create Getters and Setters
+
+  // 1. fetch the tasks from localstorage, when they are present.
+  // Best to do this once on App start, so we use the constructor
+  constructor() {
+    // 1b. localstorage stores data as JSON
+    const tasksJson = localStorage.getItem(TASKS_LOCALSTORAGE_KEY);
+
+    if (tasksJson) {
+      // 2. overwrite the "bootstrapped" tasks from the hardcoded array above
+      // with the actual tasks from localStorage
+      this.tasks = JSON.parse(tasksJson);
+    }
+  }
+
   getUserTasks(userId: string): Array<Task> {
     return this.tasks.filter((task) => task.userId === userId);
   }
@@ -41,9 +53,20 @@ export class TasksService {
       id: new Date().toString(),
       ...taskData
     });
+    // 4. Call this private method when we change our tasks
+    this.saveTasks();
   }
 
   removeTask(taskId: string) {
-    this.tasks = this.tasks.filter((task) => task.id !== taskId)
+    this.tasks = this.tasks.filter((task) => task.id !== taskId);
+    // 4. Call this private method when we change our tasks
+    this.saveTasks();
+  }
+
+  // 3. Create a private method to save our tasks to localstorage
+  private saveTasks() {
+    // 3. convert tasks array to a json string
+    const tasksJSON = JSON.stringify(this.tasks);
+    localStorage.setItem(TASKS_LOCALSTORAGE_KEY, tasksJSON);
   }
 }
