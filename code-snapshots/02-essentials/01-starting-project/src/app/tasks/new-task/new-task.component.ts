@@ -19,7 +19,7 @@ export class NewTaskComponent {
   enteredSummary = '';
   enteredDate = '';
   // 6 Alternative way of injection without constructor
-  private tasksService = inject(TasksService)
+  private tasksService = inject(TasksService);
 
   onCancel() {
     this.close.emit();
