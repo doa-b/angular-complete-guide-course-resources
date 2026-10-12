@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
-
-import { HeaderComponent } from './header/header.component';
-import { UserComponent } from './user/user.component';
-import { DUMMY_USERS } from './dummy-users';
-import { TasksComponent } from "./tasks/tasks.component";
+import {Component} from '@angular/core';
+import {DUMMY_USERS} from './dummy-users';
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
-    imports: [HeaderComponent, UserComponent, TasksComponent]
+  selector: 'app-root',
+  // 4. Now we need to set standalone to false
+  // standalone: true,
+  standalone: false,
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+  // 5. now we do not need this anymore
+  // imports: [HeaderComponent, UserComponent, TasksComponent]
 })
 export class AppComponent {
   users = DUMMY_USERS;
