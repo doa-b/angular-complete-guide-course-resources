@@ -1,12 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-
-export type SubmittedValues = {
-  initialInvestment: number;
-  annualInvestment: number;
-  expectedReturn: number;
-  duration: number;
-};
+import {InvestmentInput} from "../investment-input.model";
 
 @Component({
   selector: 'app-user-input',
@@ -21,7 +15,7 @@ export class UserInputComponent {
   expectedReturn = '5';
   duration = '10';
   // 1. Define an output property to emit the submitted values
-  @Output() submittedValues = new EventEmitter<SubmittedValues>();
+  @Output() submittedValues = new EventEmitter<InvestmentInput>();
 
   protected onSubmit() {
     const submittedValues = {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {HeaderComponent} from "./header/header.component";
-import {SubmittedValues, UserInputComponent} from "./user-input/user-input.component";
+import {UserInputComponent} from "./user-input/user-input.component";
+import {InvestmentInput} from "./investment-input.model";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import {SubmittedValues, UserInputComponent} from "./user-input/user-input.compo
 })
 export class AppComponent {
 
-  onCalculateInvestmentResults(submittedValues: SubmittedValues) {
+  onCalculateInvestmentResults(submittedValues: InvestmentInput) {
     const annualData = [];
     const { initialInvestment, annualInvestment, expectedReturn, duration } = submittedValues;
     let investmentValue = initialInvestment;
