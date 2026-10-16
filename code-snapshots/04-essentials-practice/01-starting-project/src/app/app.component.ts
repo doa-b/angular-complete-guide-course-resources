@@ -1,4 +1,4 @@
-import {Component, Output} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {HeaderComponent} from "./header/header.component";
 import {UserInputComponent} from "./user-input/user-input.component";
 import {InvestmentInput} from "./investment-input.model";
@@ -12,9 +12,10 @@ import {investmentOutput} from "./investment-output.model";
   imports: [HeaderComponent, UserInputComponent, InvestmentResultsComponent]
 })
 export class AppComponent {
-  annualData: investmentOutput[] = [];
+  annualData = signal<investmentOutput[] | undefined>(undefined);
 
   onCalculateInvestmentResults(submittedValues: InvestmentInput) {
+    const result = [];
     const { initialInvestment, annualInvestment, expectedReturn, duration } = submittedValues;
     let investmentValue = initialInvestment;
 
@@ -24,7 +25,7 @@ export class AppComponent {
       investmentValue += interestEarnedInYear + annualInvestment;
       const totalInterest =
         investmentValue - annualInvestment * year - initialInvestment;
-      this.annualData.push({
+      result.push({
         year: year,
         interest: interestEarnedInYear,
         valueEndOfYear: investmentValue,
@@ -33,8 +34,7 @@ export class AppComponent {
         totalAmountInvested: initialInvestment + annualInvestment * year,
       });
     }
-    console.log('result', this.annualData);
-
+    this.annualData.set(result);
   }
 
 }
